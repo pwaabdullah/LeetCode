@@ -11,7 +11,7 @@ class Solution(object):
         queue, result = [], []
         if root is None: return result
         queue.append(root)
-        direction = True
+        direction = True  # True: L to R
         while queue:
             levelResult = deque()
             for _ in range(len(queue)):
@@ -24,8 +24,7 @@ class Solution(object):
                 if currentNode.right: queue.append(currentNode.right)
 
             result.append(levelResult)
-            # changing direction at every level
-            if direction: direction = False
-            else: direction=True
-                
+            # changing direction
+            direction = not direction
+
         return result
